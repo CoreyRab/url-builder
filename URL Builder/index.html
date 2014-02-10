@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+    <head>
+        <meta name="generator" content="HTML Tidy for Mac OS X (vers 31 October 2006 - Apple Inc. build 15.12), see www.w3.org">
+        <title>
+            URL Builder
+        </title>
+        <link rel="stylesheet" href="css/foundation.css" type="text/css">
+    
+    </head>
+    <body>
+        <nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">URL Builder</a></h1>
+    </li>
+  </ul>
+</nav>
+
+<br/>
+<br/>
+        <div ng-app="myApp">
+            <div class="large-6 columns">
+                <label style="font-size:16px;">URL<small> required</small></label> <input type="text" ng-model="data.url" autofocus="" placeholder="URL of your website. ex. www.widgets.com/blue-widgets">
+            
+            </div>
+            <div class="large-6 columns">
+                <label style="font-size:16px;">Source<small> required</small></label> <input type="text" ng-bind="?/utm=" ng-model="data.source" placeholder="URL they are sent from. ex. twitter.com, yelp.com, etc.">
+            </div>
+            <div class="large-6 columns">
+                <label style="font-size:16px;">Medium<small> required</small></label> <input type="text" ng-model="data.medium" placeholder="Type of content used. ex. banner_ad, newsletter, etc.">
+            </div>
+            <div class="large-6 columns">
+                <label style="font-size:16px;">Campaign Term</label> <input type="text" ng-model="data.campaignTerm" placeholder="For paid keywords">
+            </div>
+            <div class="large-6 columns">
+                <label style="font-size:16px;">Campaign Content</label> <input type="text" ng-model="data.campaignContent" placeholder="Terms used in marketing content. ex. Free vs. 20% off">
+            </div>
+            <div class="large-6 columns">
+                <label style="font-size:16px;">Campaign Name<small> required</small></label> <input type="text" ng-model="data.campaignName" placeholder="Name of the campaign. ex. End of summer promotion">
+            </div>
+                <!-- this is the quicker way to add the content -->
+                <h2 ng-show="data.url" style="text-align:center">
+                    Your URL, sir
+                </h2>
+             <div ng-show="data.url" >   
+                <textarea rows="1" ng-trim="true" style="font-size:24px; text-align:center;" class="panel" id="selectible">{{data.url}}{{(data.source) ? '?/utm_source=' + data.source : ''}}{{(data.medium) ? '&amp;utm_medium=' + data.medium : ''}}{{(data.campaignTerm) ? '&amp;utm_term=' + data.campaignTerm : ''}}{{(data.campaignContent) ? '&amp;utm_content=' + data.campaignContent : ''}}{{(data.campaignName) ? '&amp;utm_name=' + data.campaignName : ''}}</textarea>
+          <center><button id="buttonChange" onclick="selectible.select(); changeText();">Select URL</button></center>
+            </div>
+        </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js">
+</script><script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="/js/foundation/foundation.abide.js"></script>
+<script type="text/javascript">
+function changeText()
+{
+ document.getElementById("buttonChange").innerHTML = 'Ctrl + C to Copy';
+}
+</script>
+
+
+    </body>
+</html>
